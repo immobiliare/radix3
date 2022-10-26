@@ -1,10 +1,10 @@
 # 🌳 radix3
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![Github Actions][github-actions-src]][github-actions-href]
-[![Codecov][codecov-src]][codecov-href]
-[![bundle][bundle-src]][bundle-href]
+![release workflow](https://img.shields.io/github/workflow/status/immobiliare/radix3/Release)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier?style=flat-square)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
+![npm (scoped)](https://img.shields.io/npm/v/@immobiliarelabs/radix3?style=flat-square)
+![license](https://img.shields.io/github/license/immobiliare/radix3)
 
 Lightweight and fast router for JavaScript based on [Radix Tree](https://en.wikipedia.org/wiki/Radix_tree). 
 This fork of [`unjs/radix3`](https://github.com/unjs/radix3) adds functional matching `::function` to the base library.
