@@ -18,6 +18,8 @@ This fork of [`unjs/radix3`](https://github.com/unjs/radix3) adds functional mat
   * [Options](#options)
     + [Route Matcher](#route-matcher)
   * [Performance](#performance)
+  * [Powered Apps](#powered-apps)
+  * [Support & Contribute](#support--contribute)
   * [License](#license)
 
 ## Usage
