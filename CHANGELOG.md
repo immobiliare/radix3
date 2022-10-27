@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/immobiliare/radix3/compare/v1.0.0...v1.0.1) (2022-10-27)
+
+
+### Bug Fixes
+
+* fixed insert type ([299b177](https://github.com/immobiliare/radix3/commit/299b177123ec4f685122a76b9fba55a770f8e2d9))
+
 # 1.0.0 (2022-10-27)
 
 
