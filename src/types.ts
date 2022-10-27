@@ -31,6 +31,7 @@ export interface RadixNode<T extends RadixNodeData = RadixNodeData> {
 
 export interface RadixRouterOptions {
     strictTrailingSlash?: boolean;
+    parseParameters?: boolean;
     routes?: Record<string, any>;
     funcs?: Record<string, (str: string) => boolean>;
 }
@@ -40,6 +41,7 @@ export interface RadixRouterContext<T extends RadixNodeData = RadixNodeData> {
     rootNode: RadixNode<T>;
     staticRoutesMap: Record<string, RadixNode>;
     funcs: Record<string, (str: string) => boolean>;
+    parseParameters: boolean;
 }
 
 export interface RadixRouter<T extends RadixNodeData = RadixNodeData> {
