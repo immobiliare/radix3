@@ -59,11 +59,7 @@ export interface RadixRouter<T extends RadixNodeData = RadixNodeData> {
      * @param data - the associated data to path
      *
      */
-    insert(
-        path: string,
-        data: T,
-        funcs?: { [key: string]: ((str: string) => boolean) | undefined }
-    ): void;
+    insert(path: string, data: T): void;
 
     /**
      * Perform a remove on the tree
