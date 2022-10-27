@@ -21,6 +21,9 @@ jobs:
                   persist-credentials: false
 
             - name: Install dependencies
+              run: npm set-script prepare ''
+
+            - name: Install dependencies
               run: npm i
 
             - name: Build
