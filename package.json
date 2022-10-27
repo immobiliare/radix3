@@ -37,7 +37,7 @@
     "dev": "vitest",
     "playground": "jiti ./playground.ts",
     "test": "npm run lint && vitest run",
-    "prepare": "node prepare.cjs || echo 'Skipping prepare' && husky install"
+    "prepare": ""
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
