@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/immobiliare/radix3/compare/v1.0.1...v1.1.0) (2022-10-28)
+
+
+### Bug Fixes
+
+* benchmark ([644f825](https://github.com/immobiliare/radix3/commit/644f825602cbb479c36743b9df682037af7763e9))
+
+
+### Features
+
+* added ignore parameters option ([63c4d14](https://github.com/immobiliare/radix3/commit/63c4d14d3c09ce404c5a7ef03bfec00bd6112f8a))
+
 ## [1.0.1](https://github.com/immobiliare/radix3/compare/v1.0.0...v1.0.1) (2022-10-27)
 
 
