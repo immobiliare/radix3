@@ -8,14 +8,14 @@ export const NODE_TYPES = {
 type _NODE_TYPES = typeof NODE_TYPES;
 export type NODE_TYPE = _NODE_TYPES[keyof _NODE_TYPES];
 
-type _RadixNodeDataObject = { params?: never; [key: string]: any };
+type _RadixNodeDataObject = { params?: never; [key: string]: unknown };
 export type RadixNodeData<
     T extends _RadixNodeDataObject = _RadixNodeDataObject
 > = T;
 export type MatchedRoute<T extends RadixNodeData = RadixNodeData> = Omit<
     T,
     'params'
-> & { params?: Record<string, any> };
+> & { params?: Record<string, unknown> };
 
 export interface RadixNode<T extends RadixNodeData = RadixNodeData> {
     type: NODE_TYPE;
@@ -31,7 +31,7 @@ export interface RadixNode<T extends RadixNodeData = RadixNodeData> {
 
 export interface RadixRouterOptions {
     strictTrailingSlash?: boolean;
-    routes?: Record<string, any>;
+    routes?: Record<string, unknown>;
     funcs?: Record<string, (str: string) => boolean>;
 }
 

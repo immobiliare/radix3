@@ -8,9 +8,9 @@ import type {
 } from './types';
 import { NODE_TYPES } from './types';
 
-export function createRouter<T extends RadixNodeData = RadixNodeData>(
+export function createRouter(
     options: RadixRouterOptions = {}
-): RadixRouter<T> {
+): RadixRouter<RadixNodeData> {
     const ctx: RadixRouterContext = {
         options,
         rootNode: createRadixNode(),
@@ -29,9 +29,8 @@ export function createRouter<T extends RadixNodeData = RadixNodeData>(
 
     return {
         ctx,
-        // @ts-ignore
         lookup: (path: string) => lookup(ctx, normalizeTrailingSlash(path)),
-        insert: (path: string, data: any) =>
+        insert: (path: string, data: unknown) =>
             insert(ctx, normalizeTrailingSlash(path), data),
         remove: (path: string) => remove(ctx, normalizeTrailingSlash(path)),
     };
