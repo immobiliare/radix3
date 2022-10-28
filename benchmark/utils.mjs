@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { readFileSync } from 'fs';
 import os from 'os';
-import { createRouter } from '@immobiliarelabs/radix3';
+import { createRouter } from '../dist/index.mjs';
 
 export const logSection = (title) => {
     console.log(`\n--- ${title} ---\n`);
@@ -31,6 +31,7 @@ export function printStats(stats) {
 }
 
 export const router = createRouter({
+    parseParameters: true,
     routes: Object.fromEntries(
         [
             '/hello',

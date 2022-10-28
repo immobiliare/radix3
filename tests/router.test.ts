@@ -193,6 +193,27 @@ describe('Router lookup', function () {
             }
         );
     });
+
+    describe('ignoreParameters Should works', function () {
+        const router = createRouter({
+            parseParameters: false,
+            routes: {
+                '::test/some': { type: 'function' },
+                ':bla/*': { type: 'var' },
+                'hello/**': { type: 'wildcard' },
+            },
+            funcs: { test: (str) => str.length === 2 },
+        });
+        it('lookup', () => {
+            expect(router.lookup('it/some')).to.deep.equal({
+                type: 'function',
+            });
+            expect(router.lookup('hellos/good')).to.deep.equal({ type: 'var' });
+            expect(router.lookup('hello/good/jobs')).to.deep.equal({
+                type: 'wildcard',
+            });
+        });
+    });
 });
 
 describe('Router insert', function () {

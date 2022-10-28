@@ -16,6 +16,10 @@ export function createRouter<T extends RadixNodeData = RadixNodeData>(
         rootNode: createRadixNode(),
         staticRoutesMap: {},
         funcs: options.funcs || {},
+        parseParameters:
+            typeof options.parseParameters === 'boolean'
+                ? options.parseParameters
+                : true,
     };
 
     const normalizeTrailingSlash = (p) =>
@@ -53,9 +57,12 @@ function lookup(ctx: RadixRouterContext, path: string): MatchedRoute {
         return staticPathNode.data;
     }
 
+    const parseParameters = ctx.parseParameters;
     const sections = path.split('/');
 
-    const params: MatchedRoute['params'] = {};
+    let params: MatchedRoute['params'];
+    if (parseParameters) params = {};
+
     let paramsFound = false;
     let wildcardNode = null;
     let node = ctx.rootNode;
@@ -77,32 +84,36 @@ function lookup(ctx: RadixRouterContext, path: string): MatchedRoute {
             const currNode = find(node.placeholderChildrenNodeChecked, section);
             if (currNode) {
                 node = currNode;
-                params[node.paramName] = section;
-                paramsFound = true;
-            } else {
-                node = node.placeholderChildNode;
-                if (node !== null) {
+                if (parseParameters) {
                     params[node.paramName] = section;
                     paramsFound = true;
-                } else {
-                    break;
+                }
+            } else {
+                node = node.placeholderChildNode;
+                if (node === null) break;
+
+                if (parseParameters) {
+                    params[node.paramName] = section;
+                    paramsFound = true;
                 }
             }
         } else {
             node = node.placeholderChildNode;
-            if (node !== null) {
+            if (node === null) break;
+
+            if (parseParameters) {
                 params[node.paramName] = section;
                 paramsFound = true;
-            } else {
-                break;
             }
         }
     }
 
     if ((node === null || node.data === null) && wildcardNode !== null) {
         node = wildcardNode;
-        params[node.paramName || '_'] = wildCardParam;
-        paramsFound = true;
+        if (parseParameters) {
+            params[node.paramName || '_'] = wildCardParam;
+            paramsFound = true;
+        }
     }
 
     if (!node) {
