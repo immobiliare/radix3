@@ -111,6 +111,8 @@ const router = createRouter({
 - `routes`: An object specifying initial routes to add
 - `strictTrailingSlash`: By default router ignored trailing slash for matching and adding routes. When set to `true`, matching with trailing slash is different.
 - `funcs`: An object containing the functions used in the routes
+- `parseParameters`: By default this variable is set to `true`. When set to `false`, the `params` attribute will not be present in the lookup function output object. Putting this parameter to `false` increases the lookup performance by 3x..
+
 
 ### Route Matcher
 
