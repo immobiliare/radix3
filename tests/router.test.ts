@@ -326,6 +326,28 @@ describe('Router insert', function () {
         });
         expect(apiRouteData!.anotherField).to.equal(3);
     });
+
+    it('should throw if function does not exist', function () {
+        expect(() =>
+            createRouter({
+                routes: { '/::notLen/v1': { data: 1 } },
+                funcs: {
+                    len: (str) => str.length === 2,
+                },
+            })
+        ).toThrowError(
+            `the function notLen is not defined in the funcs object.`
+        );
+
+        const router = createRouter({
+            funcs: {
+                len: (str) => str.length === 2,
+            },
+        });
+        expect(() => router.insert('/::notLen/v1', { data: 1 })).toThrowError(
+            `the function notLen is not defined in the funcs object.`
+        );
+    });
 });
 
 describe('Router remove', function () {

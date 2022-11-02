@@ -169,7 +169,13 @@ function insert(ctx: RadixRouterContext, path: string, data: any) {
                 const splitted = section.slice(2).split(':');
                 childNode.paramName =
                     splitted[1] || `_${_unnamedPlaceholderCtr++}`;
-                childNode.check = funcs?.[splitted[0]] || (() => true);
+                const checkFn = funcs?.[splitted[0]];
+                if (!checkFn) {
+                    throw new Error(
+                        `the function ${splitted[0]} is not defined in the funcs object.`
+                    );
+                }
+                childNode.check = checkFn;
                 node.placeholderChildrenNodeChecked.push(childNode);
                 isStaticRoute = false;
             } else if (type === NODE_TYPES.WILDCARD) {
