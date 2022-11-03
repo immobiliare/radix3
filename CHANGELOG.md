@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/immobiliare/radix3/compare/v1.1.0...v2.0.0) (2022-11-03)
+
+
+### Features
+
+* insert/createRouter throws when function specified in the route does not exist in funcs obj ([7ebe282](https://github.com/immobiliare/radix3/commit/7ebe2824b9fd1d07fdee650bef7cac5255143eeb))
+
+
+### BREAKING CHANGES
+
+* insert/createRouter now can throws
+
 # [1.1.0](https://github.com/immobiliare/radix3/compare/v1.0.1...v1.1.0) (2022-10-28)
 
 
