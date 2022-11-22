@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { s } from 'vitest/dist/index-2f5b6168';
 import { createRouter, NODE_TYPES } from '../src';
 
 export function createRoutes(paths) {
@@ -44,10 +45,15 @@ describe('Router lookup', function () {
                 'carbon/::lengthMajor:element/test/:testing',
                 'this/:route/has/:cool/stuff',
                 'this/::length2:route/has/:cool/stuff',
+                'this/::length2:route/has/:cool/stuff',
+                'hello/::test/good',
+                // 'hello2/::test/good',
+                // 'hello2/:good',
             ],
             {
                 length2: (v: string) => v.length === 2,
                 lengthMajor: (v: string) => v.length === 3,
+                test: (v: string) => v.endsWith('test'),
             },
             {
                 'carbon/test1': {
@@ -87,6 +93,25 @@ describe('Router lookup', function () {
                         cool: 'more',
                     },
                 },
+                'hello/test/good': {
+                    path: 'hello/::test/good',
+                    params: {
+                        _0: 'test',
+                    },
+                },
+                'hello/test': null,
+                // 'hello2/test/good': {
+                //     path: 'hello2/::test/good',
+                //     params: {
+                //         _0: 'test',
+                //     },
+                // },
+                // 'hello2/test': {
+                //     path: 'hello2/:good',
+                //     params: {
+                //         good: 'test',
+                //     },
+                // },
             }
         );
     });
@@ -368,8 +393,11 @@ describe('Router remove', function () {
                 '::ends/hello',
                 'build/::ends/blue',
                 'build/::ends/green',
+                'remove/::remove',
+                'remove/::remove/something',
             ]),
             funcs: {
+                remove: (str: string) => str.endsWith('remove'),
                 start: (str: string) => str.startsWith('test'),
                 ends: (str: string) => str.endsWith('testEnds'),
             },
@@ -419,6 +447,22 @@ describe('Router remove', function () {
             path: 'build/::ends/green',
             params: { _0: 'testEnds' },
         });
+
+        expect(router.lookup('remove/Hellremove')).to.deep.equal({
+            path: 'remove/::remove',
+            params: { _0: 'Hellremove' },
+        });
+        expect(router.lookup('remove/remove/something')).to.deep.equal({
+            path: 'remove/::remove/something',
+            params: { _0: 'remove' },
+        });
+        router.remove('remove/::remove');
+
+        expect(router.lookup('remove/Hellremove/something')).to.deep.equal({
+            path: 'remove/::remove/something',
+            params: { _0: 'Hellremove' },
+        });
+        expect(router.lookup('remove/Hellremove')).to.deep.equal(null);
     });
 
     it('should be able to remove placeholder routes', function () {
@@ -437,8 +481,8 @@ describe('Router remove', function () {
         });
 
         // TODO
-        // router.remove('placeholder/:choo')
-        // expect(router.lookup('placeholder/route')).to.deep.equal(null)
+        // router.remove('placeholder/:choo');
+        // expect(router.lookup('placeholder/route')).to.deep.equal(null);
 
         expect(router.lookup('placeholder/route/route2')).to.deep.equal({
             path: 'placeholder/:choo/:choo2',
