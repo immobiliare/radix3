@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest';
-import { s } from 'vitest/dist/index-2f5b6168';
 import { createRouter, NODE_TYPES } from '../src';
 
 export function createRoutes(paths) {
