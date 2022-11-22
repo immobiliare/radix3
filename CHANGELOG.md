@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/immobiliare/radix3/compare/v2.0.0...v2.0.1) (2022-11-22)
+
+
+### Bug Fixes
+
+* lookup function ([bbeb45f](https://github.com/immobiliare/radix3/commit/bbeb45fad9cee34c5edda39daa5ed26fbcf09aed))
+
 # [2.0.0](https://github.com/immobiliare/radix3/compare/v1.1.0...v2.0.0) (2022-11-03)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@immobiliarelabs/radix3",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lightweight and fast router for JavaScript based on Radix Tree",
   "repository": {
     "type": "git",
