@@ -120,7 +120,7 @@ function lookup(ctx: RadixRouterContext, path: string): MatchedRoute {
         return null;
     }
 
-    if (paramsFound) {
+    if (paramsFound && node.data) {
         return {
             ...node.data,
             params: paramsFound ? params : undefined,
