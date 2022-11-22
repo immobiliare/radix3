@@ -64,7 +64,7 @@
     "is-ci": "^3.0.0",
     "jiti": "^1.16.0",
     "lint-staged": "^13.0.0",
-    "listhen": "^0.3.4",
+    "listhen": "^1.0.0",
     "markdown-toc": "^1.2.0",
     "ohmyfetch": "^0.4.19",
     "prettier": "^2.0.5",
