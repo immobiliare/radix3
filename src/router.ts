@@ -14,7 +14,7 @@ export function createRouter<T extends RadixNodeData = RadixNodeData>(
     const ctx: RadixRouterContext = {
         options,
         rootNode: createRadixNode(),
-        staticRoutesMap: {},
+        staticRoutesMap: Object.create(null),
         funcs: options.funcs || {},
         parseParameters:
             typeof options.parseParameters === 'boolean'
