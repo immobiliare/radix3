@@ -69,7 +69,7 @@
     "ohmyfetch": "^0.4.19",
     "prettier": "^2.0.5",
     "typescript": "^5.0.3",
-    "unbuild": "^1.0.1",
+    "unbuild": "^2.0.0",
     "vitest": "^0.29.8"
   },
   "volta": {
